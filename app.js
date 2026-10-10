@@ -129,24 +129,29 @@ function renderPlaylist(songs) {
 
 songForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  
+
   const title = songTitle.value.trim();
   const artist = songArtist.value.trim();
   const genre = songGenre.value;
+
   if (title === "" || artist === "" || genre === "") {
     formError.textContent = "Please complete all fields.";
     return;
   } else {
     formError.textContent = "";
   }
+
   const newSong = {
     id: Date.now(),
     title: title,
     artist: artist,
     genre: genre,
   };
+  
   playlist = [...playlist, newSong];
+
   renderPlaylist(playlist);
+
   songForm.reset();
 });
 
@@ -164,6 +169,7 @@ songForm.addEventListener("submit", function (event) {
 //
 // ========================================
 searchInput.addEventListener("input", function () {
+
   const searchText = searchInput.value.toLowerCase().trim();
 
   const filteredSongs = playlist.filter(function (song) {
@@ -172,8 +178,7 @@ searchInput.addEventListener("input", function () {
 
     return title.includes(searchText) || artist.includes(searchText);
   });
-
-  // 4. Display the filtered songs.
+  
   renderPlaylist(filteredSongs);
 });
 
@@ -197,7 +202,6 @@ function removeSong(songId) {
     }
     return true;
   });
-
   renderPlaylist(playlist);
 }
 
