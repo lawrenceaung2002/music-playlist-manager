@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Music Playlist Manager</title>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <main class="app">
+
+        <!-- ==============================
+         HEADER
+    =============================== -->
+        <header class="header">
+
+            <div class="brand">
+                <div class="brand-icon">♫</div>
+
+                <div>
+                    <h1>My Playlist</h1>
+                    <p>Keep your favorite songs in one place.</p>
+                </div>
+            </div>
+
+            <div class="playlist-count">
+                <span id="songCount">0</span>
+                <small>songs</small>
+            </div>
+
+        </header>
+
+
+        <!-- ==============================
+         ADD SONG FORM
+    =============================== -->
+
+        <section class="add-section">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">Playlist</span>
+                    <h2>Add a new song</h2>
+                </div>
+            </div>
+
+            <form id="songForm" class="song-form">
+
+                <div class="input-group">
+                    <label for="songTitle">Song title</label>
+
+                    <input type="text" id="songTitle" placeholder="e.g. Blinding Lights" />
+                </div>
+
+                <div class="input-group">
+                    <label for="songArtist">Artist</label>
+
+                    <input type="text" id="songArtist" placeholder="e.g. The Weeknd" />
+                </div>
+
+                <div class="input-group">
+                    <label for="songGenre">Genre</label>
+
+                    <select id="songGenre">
+
+                        <option value="">Select genre</option>
+                        <option value="Pop">Pop</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Hip Hop">Hip Hop</option>
+                        <option value="R&B">R&B</option>
+                        <option value="Electronic">Electronic</option>
+
+                    </select>
+                </div>
+
+                <button type="submit" class="add-button">
+                    + Add Song
+                </button>
+
+            </form>
+
+            <!-- Error message -->
+            <p id="formError" class="form-error"></p>
+
+        </section>
+
+
+        <!-- ==============================
+         SEARCH
+    =============================== -->
+
+        <section class="playlist-section">
+
+            <div class="playlist-header">
+
+                <div>
+                    <span class="eyebrow">Collection</span>
+                    <h2>Your Songs</h2>
+                </div>
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input type="text" id="searchInput" placeholder="Search songs..." />
+
+                </div>
+
+            </div>
+
+
+            <!-- ==============================
+           PLAYLIST CONTAINER
+      =============================== -->
+
+            <div id="playlist" class="playlist">
+
+                <!-- JavaScript will display songs here -->
+
+            </div>
+
+
+            <!-- Empty state -->
+            <div id="emptyState" class="empty-state">
+
+                <div class="empty-icon">♫</div>
+
+                <h3>No songs yet</h3>
+
+                <p>
+                    Add your first song to start building your playlist.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
