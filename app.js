@@ -134,12 +134,11 @@ songForm.addEventListener("submit", function (event) {
   const artist = songArtist.value.trim();
   const genre = songGenre.value;
 
-  if (title === "" || artist === "" || genre === "") {
+  if (!title || !artist || !genre) {
     formError.textContent = "Please complete all fields.";
     return;
-  } else {
-    formError.textContent = "";
   }
+  formError.textContent = "";
 
   const newSong = {
     id: Date.now(),
@@ -147,7 +146,7 @@ songForm.addEventListener("submit", function (event) {
     artist: artist,
     genre: genre,
   };
-  
+
   playlist = [...playlist, newSong];
 
   renderPlaylist(playlist);
@@ -169,7 +168,6 @@ songForm.addEventListener("submit", function (event) {
 //
 // ========================================
 searchInput.addEventListener("input", function () {
-
   const searchText = searchInput.value.toLowerCase().trim();
 
   const filteredSongs = playlist.filter(function (song) {
@@ -178,7 +176,7 @@ searchInput.addEventListener("input", function () {
 
     return title.includes(searchText) || artist.includes(searchText);
   });
-  
+
   renderPlaylist(filteredSongs);
 });
 
@@ -197,11 +195,9 @@ searchInput.addEventListener("input", function () {
 
 function removeSong(songId) {
   playlist = playlist.filter(function (song) {
-    if (song.id === songId) {
-      return false;
-    }
-    return true;
+    return song.id !== songId;
   });
+
   renderPlaylist(playlist);
 }
 
